@@ -1,0 +1,19 @@
+Options +FollowSymLinks -MultiViews -Indexes
+
+#order deny,allow
+#deny from all
+#allow from 10.47.219.115
+#allow from 192.168.1.101
+#allow from 192.168.1.102
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA] 
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+dirname/([^\s]+) [NC]
+RewriteRule ^ %1 [R=301,L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule (?!^dirname/)^(.*)$ /dirname/$1 [L,NC]
