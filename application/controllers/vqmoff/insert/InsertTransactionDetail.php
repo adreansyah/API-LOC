@@ -27,8 +27,8 @@ class InsertTransactionDetail extends REST_Controller {
       $table = 'transaction_detail';
       $data  = array(
         'transaction_code'    => $this->input->post('transaction_code',TRUE),
-        'item_id'             => $this->input->post('transaction_type',TRUE),
-        'item_qty'            => $this->input->post('transaction_status',TRUE),
+        'item_id'             => $this->input->post('item_id',TRUE),
+        'item_qty'            => $this->input->post('item_qty',TRUE),    
       );
       $this->query_builder->insert_data($table,$data);
   	}
